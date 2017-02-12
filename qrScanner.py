@@ -5,7 +5,9 @@ import qrtools
 
 DEVICE = '/dev/video0'
 SIZE = (640, 480)
-FILE = 'qrCode.png'
+QR_FILE = 'qrCode.png'
+TEAM_NUMBER = input("What team number did you scout? ")
+FILE = 'scoutingFile'
 
 pygame.camera.init()
 
@@ -26,12 +28,14 @@ while capture:
             capture = False
         elif event.type == KEYDOWN and event.key == K_RIGHT:
             print "Picture Taken!"
-            pygame.image.save(screen, FILE)
+            pygame.image.save(screen, QR_FILE)
             qr = qrtools.QR()
-            qr.decode(FILE)
+            qr.decode(QR_FILE)
             print "Here is the QR Code Data: "
             print qr.data
             print "Click the 'X' to exit"
+            f = open(FILE, 'a')
+            f.write('Team Number ' + str(TEAM_NUMBER) + ': ' + qr.data + '\n')
 
 camera.stop()
 pygame.quit()
