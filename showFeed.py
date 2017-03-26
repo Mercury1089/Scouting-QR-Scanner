@@ -104,8 +104,8 @@ def show_webcam(mirror=False):
 #				l_img[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1], c] =  s_img[:,:,c] * (s_img[:,:,3]/255.0) +  l_img[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1], c] * (1.0 - s_img[:,:,3]/255.0)
 #			camera_capture = l_img
 #			cv2.putText(camera_capture, 'This one!', (230, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-#			cv2.imshow('1089 Scouting Scanner', camera_capture)
-#			timeToWait = 2
+#			cv2.imshow('1089 Scouting Scanner', s_img)
+#			time.sleep(2)
 		else:
 			camera_capture = img
 	cv2.destroyAllWindows()
